@@ -1,6 +1,6 @@
 steps:
   # Reservations
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'build',
@@ -10,7 +10,7 @@ steps:
         'apps/reservations/Dockerfile',
         '.',
       ]
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'push',
@@ -18,7 +18,7 @@ steps:
       ]
 
   # Auth
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'build',
@@ -28,14 +28,14 @@ steps:
         'apps/auth/Dockerfile',
         '.',
       ]
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'push',
         'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/auth/production',
       ]
   # Notifications
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'build',
@@ -45,7 +45,7 @@ steps:
         'apps/notifications/Dockerfile',
         '.',
       ]
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'push',
@@ -53,7 +53,7 @@ steps:
       ]
 
   # Payments
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'build',
@@ -63,7 +63,7 @@ steps:
         'apps/payments/Dockerfile',
         '.',
       ]
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       [
         'push',
