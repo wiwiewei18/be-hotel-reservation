@@ -1,0 +1,71 @@
+steps:
+  # Reservations
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/reservations/production',
+        '-f',
+        'apps/reservations/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'push',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/reservations/production',
+      ]
+
+  # Auth
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/auth/production',
+        '-f',
+        'apps/auth/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'push',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/auth/production',
+      ]
+  # Notifications
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/notifications/production',
+        '-f',
+        'apps/notifications/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'push',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/notifications/production',
+      ]
+
+  # Payments
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/payments/production',
+        '-f',
+        'apps/payments/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'push',
+        'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/payments/production',
+      ]
