@@ -69,3 +69,7 @@ steps:
         'push',
         'asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/payments/production',
       ]
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: '1200s'
+serviceAccount: 256210016154-compute@developer.gserviceaccount.com
