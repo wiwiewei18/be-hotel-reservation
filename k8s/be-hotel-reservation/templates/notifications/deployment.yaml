@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notifications
+  name: notifications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notifications
+  template:
+    metadata:
+      labels:
+        app: notifications
+    spec:
+      containers:
+        - image: asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/notifications/production
+          name: notifications
+          env:
+            - name: PORT
+              value: '3000'
+            - name: SMTP_USER
+              value: behotelreservation@gmail.com
+            - name: GOOGLE_OAUTH_CLIENT_ID
+              value: 147979842240-b61ojc81imcnv2oabb635cj7nf7ipmaa.apps.googleusercontent.com
+            - name: GOOGLE_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: clientSecret
+            - name: GOOGLE_OAUTH_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: refreshToken
+          ports:
+            - containerPort: 3000
