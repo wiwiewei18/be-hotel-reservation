@@ -1,0 +1,43 @@
+services:
+  e2e:
+    build:
+      dockerfile: ./Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./specs
+          target: /usr/src/app/specs
+          ignore:
+            - node_modules/
+    depends_on:
+      - reservations
+      - auth
+      - payments
+      - notifications
+      - mongo
+  reservations:
+    image: asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/reservations/production
+    env_file:
+      - ../apps/reservations/.env
+    ports:
+      - '3000:3000'
+  auth:
+    image: asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/auth/production
+    env_file:
+      - ../apps/auth/.env
+    ports:
+      - '3001:3001'
+  payments:
+    image: asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/payments/production
+    env_file:
+      - ../apps/payments/.env
+    ports:
+      - '3003:3003'
+  notifications:
+    image: asia-southeast1-docker.pkg.dev/planar-momentum-445403-b1/notifications/production
+    env_file:
+      - ../apps/notifications/.env
+    ports:
+      - '3004:3004'
+  mongo:
+    image: mongo
