@@ -73,3 +73,11 @@ project-root/
    ```bash
    docker-compose up --build
    ```
+
+## Documentation
+
+- **[API Documentation](https://documenter.getpostman.com/view/17226825/2sAYJ7eyUk):** Detailed documentation for the API endpoints.
+
+## Contributors
+
+- **Wiwie Sanjaya** - Initial work - [wiwiewei18@gmail.com](mailto:wiwiewei18@gmail.com)
